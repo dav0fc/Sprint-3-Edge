@@ -1,10 +1,10 @@
-# Simulação de Velocidade de Carro de Corrida com Node-RED, Arduino Uno e MPU6050
+# Simulação de Velocidade com Node-RED, Arduino Uno e MPU6050
 
-Este projeto utiliza o Arduino Uno em conjunto com o sensor MPU6050 (acelerômetro e giroscópio) para simular a velocidade de um carro de corrida. O código também coleta mudanças de latitude, longitude, temperatura e nível de bateria, enviando essas informações em formato JSON para o Node-RED.
+Este projeto utiliza o Arduino Uno em conjunto com o sensor MPU6050 (acelerômetro e giroscópio) para simular a velocidade de um carro de corrida. O código também coleta mudanças de latitude, longitude, temperatura e nível de bateria, enviando essas informações em formato JSON atravez do MQTT para o Node-RED.
 
 ## Objetivo
 
-Capturar e processar dados de aceleração do MPU6050 para simular a velocidade de um carro, além de monitorar a temperatura, posição (latitude/longitude) e o estado da bateria. O Node-RED será usado para visualizar os dados em tempo real.
+Capturar e processar dados de aceleração do MPU6050 para simular a velocidade de um carro, além de monitorar a temperatura, posição (latitude/longitude) e o estado da bateria. O Node-RED será usado para visualizar os dados em tempo real e o MQTT para enviar esses Dados.
 
 ## Componentes Necessários
 
@@ -15,7 +15,6 @@ Capturar e processar dados de aceleração do MPU6050 para simular a velocidade 
 
 ### Bibliotecas Arduino:
 
-- `Wire.h`
 - `MPU6050.h`
 - `ArduinoJson.h`
 
@@ -26,6 +25,10 @@ Capturar e processar dados de aceleração do MPU6050 para simular a velocidade 
 - SCL (MPU6050) → Pino A5 (SCL) no Arduino Uno
 - SDA (MPU6050) → Pino A4 (SDA) no Arduino Uno
 - LED (opcional) → Pino 13 no Arduino Uno (para sinalização de alarme de temperatura)
+
+### MQTT: Envio de Dados
+
+O protocolo MQTT é usado para enviar os dados em formato JSON ao **Node-RED** de forma eficiente. O MQTT é um protocolo leve para troca de mensagens, ideal para aplicações IoT, como este projeto.
 
 ## Código Arduino
 
@@ -137,6 +140,27 @@ void loop() {
   delay(1000);  
 }
 ```
+## Node Red
+
+Após coletar os dados com o Arduino, o Node-RED será utilizado para processar e visualizar as informações em tempo real. Os dados enviados pelo Arduino podem ser recebidos via porta serial no Node-RED e exibidos em um dashboard.
+
+### Fluxo Node-RED
+
+- Nó Serial: Recebe os dados do Arduino via porta serial.
+- Nó JSON: Converte os dados recebidos em formato JSON.
+- Nó Gauge/Chart: Exibe a velocidade e outros dados em tempo real.
+
+## Conclusão
+
+Este projeto integra o **Arduino Uno**, o **sensor MPU6050** e o **Node-RED** para simular e monitorar a velocidade de um carro de corrida em tempo real. A visualização dos dados no **Node-RED** facilita o entendimento da dinâmica do carro, fornecendo informações de **velocidade**, **coordenadas**, **temperatura** e **nível de bateria**.
+
+Além disso, ao utilizar o **MPU6050**, o projeto é capaz de capturar dados de aceleração e giroscópio, o que pode ser aproveitado para futuros aprimoramentos. O Node-RED, por sua vez, oferece uma interface amigável e flexível para exibir os dados de maneira gráfica e em tempo real, permitindo o monitoramento remoto do "carro de corrida".
+
+### Referências
+
+- Documentação do ArduinoJson: [https://arduinojson.org/](https://arduinojson.org/)
+- Biblioteca MPU6050 para Arduino: [https://github.com/jrowberg/i2cdevlib](https://github.com/jrowberg/i2cdevlib)
+- Documentação do Node-RED: [https://nodered.org/docs/](https://nodered.org/docs/)
 
 ## Colaboradores do Projeto
 <div style="display: flex; justify-content: space-between; align-items: center;">
