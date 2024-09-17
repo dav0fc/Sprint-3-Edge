@@ -31,7 +31,7 @@ Capturar e processar dados de aceleração do MPU6050 para simular a velocidade 
 
 Este código coleta os dados de aceleração do MPU6050 e simula a velocidade do carro, além de monitorar a temperatura e o nível de bateria. Os dados são enviados ao Node-RED em formato JSON.
 
-```cpp
+```
 #include <ArduinoJson.h>
 #include <MPU6050.h>
 
@@ -136,7 +136,7 @@ void loop() {
 
   delay(1000);  
 }
-cpp´´´
+´´´
 
 ## Colaboradores do Projeto
 <div style="display: flex; justify-content: space-between; align-items: center;">
