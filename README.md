@@ -1,6 +1,6 @@
 # Simulação de Velocidade de Carro de Corrida com Node-RED, Arduino Uno e MPU6050
 
-Este projeto utiliza o Arduino Uno em conjunto com o sensor MPU6050 (acelerômetro e giroscópio) para simular a velocidade de um carro de corrida. O código também simula mudanças de latitude, longitude, temperatura e nível de bateria, enviando essas informações em formato JSON para o Node-RED.
+Este projeto utiliza o Arduino Uno em conjunto com o sensor MPU6050 (acelerômetro e giroscópio) para simular a velocidade de um carro de corrida. O código também coleta mudanças de latitude, longitude, temperatura e nível de bateria, enviando essas informações em formato JSON para o Node-RED.
 
 ## Objetivo
 
